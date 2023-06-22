@@ -15,7 +15,7 @@ except IndexError:
 def main():
     share_listing = read_csv()
 
-    print(f"\nProcessing {len(share_listing)} shares for {maximum} euros :")
+    print(f"\nProcessing {len(share_listing)} shares for {maximum} euros:")
 
     best_combination = set_combination(share_listing)
     display(best_combination)
