@@ -73,7 +73,7 @@ def calc_income(combination):
 
 
 def display(best_combination):
-    print(f"\n\033[34mMost profitable investment ({len(best_combination)} in shares) :\033[0m\n")
+    print(f"\n\033[34mMost profitable investment ({len(best_combination)} shares) :\033[0m\n")
 
     for item in best_combination:
         print(f"{item[0]} | {item[1]} euros | +{item[2]} %")
