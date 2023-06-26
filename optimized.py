@@ -15,15 +15,17 @@ def main():
     try:
         file = "csv/" + sys.argv[1] + ".csv"
     except IndexError:
-        print("\nNo file found. Try again.\n")
+        print("\n\x1b[34mNo file found. Try again.\x1b[0m\n")
         time.sleep(1)
         sys.exit()
 
     share_listing = read_csv(file)
 
-    print(f"\nProcessing '{sys.argv[1]}' ({len(share_listing)} shares) for {maximum}euros:")
+    print(f"\n\x1b[34mProcessing '{sys.argv[1]}' ({len(share_listing)} shares) for {maximum} euros:\x1b[0m")
 
-    display(kp(share_listing))
+    best_combination = kp(share_listing)
+
+    display(best_combination)
 
 
 def read_csv(file):
@@ -50,7 +52,7 @@ def read_csv(file):
             return share_listing
 
     except FileNotFoundError:
-        print(f"\nFile '{file}' does not exist. Please try again.\n")
+        print(f"\n\x1b[34mFile '{file}' does not exist. Please try again.\x1b[0m\n")
         time.sleep(1)
         sys.exit()
 
@@ -67,13 +69,15 @@ def kp(share_listing):
 
     kps = [[0 for x in range(max_investment + 1)] for x in range(share_total + 1)]
 
-    for i in tqdm(range(1, share_total + 1)):
+    with tqdm(total=share_total, bar_format="\x1b[32m{l_bar}{bar:30}{r_bar}\x1b[0m") as pbar:
+        for i in range(1, share_total + 1):
+            pbar.update(1)
 
-        for t in range(1, max_investment + 1):
-            if investment[i-1] <= t:
-                kps[i][t] = max(income[i-1] + kps[i-1][t-investment[i-1]], kps[i-1][t])
-            else:
-                kps[i][t] = kps[i-1][t]
+            for t in range(1, max_investment + 1):
+                if investment[i-1] <= t:
+                    kps[i][t] = max(income[i-1] + kps[i-1][t-investment[i-1]], kps[i-1][t])
+                else:
+                    kps[i][t] = kps[i-1][t]
 
     # Retrieve combination of shares from optimal profit
     best_combination = []
@@ -92,17 +96,17 @@ def kp(share_listing):
 
 
 def display(best_combination):
-    print(f"\nThe most profitable investment ({len(best_combination)} shares):\n")
+    print(f"\n\x1b[34mThe most profitable investment ({len(best_combination)} shares):\x1b[0m\n")
 
     investment = []
     income = []
 
     for item in best_combination:
-        print(f"{item[0]} | {round(item[1] / 100, 2)} euros | +{round(item[2], 2)} euros")
+        print(f"\x1b[34m{item[0]} | {round(item[1] / 100, 2)} euros | +{round(item[2], 2)} euros\x1b[0m")
         investment.append(round(item[1] / 100, 2))
         income.append(round(item[2], 2))
 
-    print("\nThe total cost : ", round(sum(investment), 2), "euros")
+    print("\n\x1b[34mThe total cost : ", round(sum(investment), 2), "euros")
     print("Profit after 2 years : +", round(sum(income), 2), "euros")
     print("\nTime elapsed : ", round(time.time() - begin_time, 2), "s\n")
 

@@ -79,7 +79,7 @@ def display(best_combination):
         print(f"{item[0]} | {item[1]} euros | +{item[2]} %")
 
     print("\n\033[34mThe total cost : \033[0m", calc_investment(best_combination), "euros")
-    print("\033[34mProfit after 2 years : +\033[0m", round(calc_income(best_combination), 2), "euros")
+    print("\033[34mProfit after 2 years :\033[0m +", round(calc_income(best_combination), 2), "euros")
     print("\n\033[34mTime elapsed : \033[0m", round(time.time() - begin_time, 2), "s")
 
 
