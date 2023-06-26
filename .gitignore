@@ -4,5 +4,5 @@ __pycache__/
 venv/
 # ignore ".idea" pycharm folder
 .idea/
-# ignore "test.py" (only for testing purpose)
-test.py
+# ignore "test" folder
+test/
