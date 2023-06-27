@@ -1,5 +1,6 @@
 # OC_P7_DA-Python
-Projet n°7: DA-Python OpenClassrooms (Develop a user interface for a Python web application)
+Projet n°7: DA-Python OpenClassrooms (Develop a user interface for a Python web application).
+
 The program calculates the best combination of stocks based on their profits using two approaches: bruteforce and dynamic programming (knapsack algorithm).
 
 ## Getting Started
