@@ -66,6 +66,12 @@ python optimized.py shares 400
 ```
 Note: During data processing, the program displays a progress bar (thanks to "tqdm").
 
+## Slides
+
+Here you'll find the slides that explain the optimised solution (including the bruteforce):
+
+[Link to PDF](pdf/Spring_Florent_3_diapositives_062023.pdf)
+
 ## Built With
 - Python
 - Git
