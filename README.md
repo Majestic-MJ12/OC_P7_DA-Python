@@ -77,4 +77,5 @@ Here you'll find the slides that explain the optimised solution (including the b
 - Git
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+GNU AFFERO GENERAL PUBLIC LICENSE
